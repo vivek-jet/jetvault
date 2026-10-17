@@ -14,3 +14,8 @@
 !Cargo.toml
 !rustfmt.toml
 !rust-toolchain.toml
+
+# JetVault branding assets used by the Docker build
+!jetvault/brand-web-vault.sh
+!jetvault/web-vault
+!jetvault/web-vault-inline

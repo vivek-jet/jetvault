@@ -1,0 +1,6 @@
+<svg version="1.1" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+<title>JetVault __SUBTITLE__</title>
+<path class="tw-fill-fg-nav" fill-rule="evenodd" transform="translate(-30 4) scale(0.75)" d="M128 40 L198 66 V122 C198 168 168 202 128 218 C88 202 58 168 58 122 V66 Z M128 96 a22 22 0 0 1 12 40.4 L146 170 H110 L116 136.4 A22 22 0 0 1 128 96 Z"/>
+<text class="tw-fill-fg-nav" x="150" y="108" font-size="112" font-weight="800" letter-spacing="-3">JetVault</text>
+<text class="tw-fill-fg-nav" x="154" y="172" font-size="46" font-weight="500" opacity="0.75">__SUBTITLE__</text>
+</svg>

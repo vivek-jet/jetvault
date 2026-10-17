@@ -1,1 +1,105 @@
 /* See the wiki for examples and details: https://github.com/dani-garcia/vaultwarden/wiki/Customize-Vaultwarden-CSS */
+
+/**** START JetVault theme ****/
+/* Indigo/violet brand palette layered over the web vault design tokens.
+   Only CSS custom properties and a few purely cosmetic rules live here,
+   so web vault upgrades from upstream keep working without changes. */
+
+:root {
+  /* New design-system primitives; semantic tokens (bg-brand, fg-brand, ...) derive from these */
+  --color-brand-050: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+  --color-brand-950: #1e1b4b;
+  --color-brand-950-rgb: 30, 27, 75;
+
+  /* Legacy RGB tokens still used by most components */
+  --color-background-alt: 245 246 252;
+  --color-background-alt2: 79 70 229;
+  --color-background-alt3: 30 27 75;
+  --color-background-alt4: 19 17 48;
+  --color-primary-100: 224 231 255;
+  --color-primary-300: 129 140 248;
+  --color-primary-600: 79 70 229;
+  --color-primary-700: 67 56 202;
+  --color-info-100: 224 231 255;
+  --color-info-600: 99 102 241;
+  --color-info-700: 49 46 129;
+  --color-hover-default: rgb(79 70 229 / 0.08);
+  --color-bw-blue: 79 70 229;
+  --color-illustration-outline: 30 27 75;
+  --color-illustration-bg-primary: 224 231 255;
+  --color-illustration-bg-secondary: 165 180 252;
+  --color-illustration-logo: 79 70 229;
+
+  /* Side navigation */
+  --color-nav-bg-primary: #1e1b4b;
+  --color-nav-bg-primary-strong: #3730a3;
+  --color-nav-bg-primary-hover: rgb(255 255 255 / 0.08);
+  --color-nav-bg-primary-hover-strong: rgb(255 255 255 / 0.16);
+  --color-nav-border-primary: #312e81;
+
+  --jv-auth-gradient:
+    radial-gradient(60rem 40rem at 0% 0%, rgb(99 102 241 / 0.14), transparent 60%),
+    radial-gradient(50rem 36rem at 100% 100%, rgb(124 58 237 / 0.12), transparent 60%);
+}
+
+html.theme_dark {
+  --color-background: 17 19 38;
+  --color-background-alt: 11 12 28;
+  --color-background-alt2: 30 31 58;
+  --color-background-alt3: 22 21 52;
+  --color-background-alt4: 11 12 28;
+  --color-primary-100: 49 46 129;
+  --color-primary-300: 67 56 202;
+  --color-primary-600: 165 180 252;
+  --color-primary-700: 199 210 254;
+  --color-info-100: 49 46 129;
+  --color-info-600: 129 140 248;
+  --color-info-700: 199 210 254;
+  --color-hover-default: rgb(165 180 252 / 0.1);
+  --color-illustration-outline: 99 102 241;
+  --color-illustration-bg-primary: 165 180 252;
+  --color-illustration-bg-secondary: 129 140 248;
+  --color-illustration-logo: 255 255 255;
+
+  --color-bg-primary: #111326;
+  --color-bg-secondary: #181a33;
+  --color-bg-tertiary: #0b0c1c;
+  --color-bg-quaternary: #23264a;
+
+  --color-nav-bg-primary: #0f0e26;
+  --color-nav-bg-secondary: #181a33;
+  --color-nav-bg-primary-strong: #2e2a6b;
+  --color-nav-bg-secondary-strong: #2e2a6b;
+  --color-nav-bg-primary-hover: rgb(165 180 252 / 0.12);
+  --color-nav-bg-secondary-hover: rgb(165 180 252 / 0.12);
+  --color-nav-bg-primary-hover-strong: rgb(165 180 252 / 0.24);
+  --color-nav-bg-secondary-hover-strong: rgb(165 180 252 / 0.24);
+  --color-nav-border-primary: #23264a;
+  --color-nav-border-secondary: #23264a;
+
+  --jv-auth-gradient:
+    radial-gradient(60rem 40rem at 0% 0%, rgb(99 102 241 / 0.18), transparent 60%),
+    radial-gradient(50rem 36rem at 100% 100%, rgb(124 58 237 / 0.16), transparent 60%);
+}
+
+/* Soft brand glow behind the login / unlock screens */
+body.layout_frontend,
+auth-anon-layout {
+  background-image: var(--jv-auth-gradient);
+  background-attachment: fixed;
+}
+
+/* Smoother focus and selection colors */
+::selection {
+  background-color: rgb(99 102 241 / 0.25);
+}
+/**** END JetVault theme ****/

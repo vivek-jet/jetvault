@@ -47,6 +47,14 @@
 {%- endmacro %}
 FROM --platform=linux/amd64 docker.io/vaultwarden/web-vault@{{ vault_image_digest }} AS vault
 
+########################## JetVault web vault branding ##########################
+FROM --platform=linux/amd64 docker.io/library/alpine:{{ alpine_version }} AS vault_branded
+COPY --from=vault /web-vault /web-vault
+COPY jetvault/brand-web-vault.sh /jetvault/brand-web-vault.sh
+COPY jetvault/web-vault /jetvault/web-vault
+COPY jetvault/web-vault-inline /jetvault/web-vault-inline
+RUN apk add --no-cache perl && sh /jetvault/brand-web-vault.sh /web-vault
+
 {% if base == "debian" %}
 ########################## Cross Compile Docker Helper Scripts ##########################
 ## We use the linux/amd64 no matter which Build Platform, since these are all bash scripts
@@ -234,7 +242,7 @@ WORKDIR /
 
 COPY docker/healthcheck.sh docker/start.sh /
 
-COPY --from=vault /web-vault ./web-vault
+COPY --from=vault_branded /web-vault ./web-vault
 COPY --from=build /app/target/final/vaultwarden .
 
 HEALTHCHECK --interval=60s --timeout=10s CMD ["/healthcheck.sh"]

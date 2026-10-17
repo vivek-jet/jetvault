@@ -29,6 +29,14 @@
 #
 FROM --platform=linux/amd64 docker.io/vaultwarden/web-vault@sha256:632375471c7c06a799335cd74dfeaef63f92f45f9cd322c337ae7ad70081e48a AS vault
 
+########################## JetVault web vault branding ##########################
+FROM --platform=linux/amd64 docker.io/library/alpine:3.24 AS vault_branded
+COPY --from=vault /web-vault /web-vault
+COPY jetvault/brand-web-vault.sh /jetvault/brand-web-vault.sh
+COPY jetvault/web-vault /jetvault/web-vault
+COPY jetvault/web-vault-inline /jetvault/web-vault-inline
+RUN apk add --no-cache perl && sh /jetvault/brand-web-vault.sh /web-vault
+
 ########################## ALPINE BUILD IMAGES ##########################
 ## NOTE: The Alpine Base Images do not support other platforms then linux/amd64 and linux/arm64
 ## And for Alpine we define all build images here, they will only be loaded when actually used
@@ -151,7 +159,7 @@ WORKDIR /
 
 COPY docker/healthcheck.sh docker/start.sh /
 
-COPY --from=vault /web-vault ./web-vault
+COPY --from=vault_branded /web-vault ./web-vault
 COPY --from=build /app/target/final/vaultwarden .
 
 HEALTHCHECK --interval=60s --timeout=10s CMD ["/healthcheck.sh"]

@@ -1,0 +1,17 @@
+{
+	email {$ACME_EMAIL}
+}
+
+{$JETVAULT_HOSTNAME} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000;"
+		-Server
+	}
+
+	# WebSocket notifications are served on the same port, Caddy proxies them transparently
+	reverse_proxy jetvault:80 {
+		header_up X-Real-IP {remote_host}
+	}
+}

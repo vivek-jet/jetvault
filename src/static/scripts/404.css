@@ -24,3 +24,25 @@ body {
 .vw-404 {
     max-width: 500px; width: 100%;
 }
+
+/**** START JetVault theme ****/
+body {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f5f6fb !important;
+}
+.navbar.bg-dark {
+    background: linear-gradient(90deg, #1e1b4b 0%, #312e81 60%, #4c1d95 100%) !important;
+}
+.navbar-brand {
+    font-weight: 700;
+}
+.navbar-brand .vaultwarden-icon {
+    margin-right: 0.5rem;
+}
+a {
+    color: #4f46e5;
+}
+a:hover {
+    color: #4338ca;
+}
+/**** END JetVault theme ****/

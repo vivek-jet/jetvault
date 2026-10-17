@@ -86,3 +86,178 @@ img {
     display: block;
     overflow: visible;
 }
+
+/**** START JetVault theme ****/
+:root,
+[data-bs-theme=light] {
+    --jv-brand: #4f46e5;
+    --jv-brand-rgb: 79, 70, 229;
+    --jv-brand-hover: #4338ca;
+    --jv-brand-soft: #eef2ff;
+    --jv-surface: #ffffff;
+    --jv-border: #e4e7f2;
+    --bs-body-font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --bs-body-bg: #f5f6fb;
+    --bs-primary: var(--jv-brand);
+    --bs-primary-rgb: var(--jv-brand-rgb);
+    --bs-link-color: var(--jv-brand);
+    --bs-link-color-rgb: var(--jv-brand-rgb);
+    --bs-link-hover-color: var(--jv-brand-hover);
+    --bs-link-hover-color-rgb: 67, 56, 202;
+    --bs-focus-ring-color: rgba(var(--jv-brand-rgb), 0.25);
+    --bs-border-radius: 0.5rem;
+    --bs-border-radius-lg: 0.75rem;
+}
+[data-bs-theme=dark] {
+    --jv-brand: #818cf8;
+    --jv-brand-rgb: 129, 140, 248;
+    --jv-brand-hover: #a5b4fc;
+    --jv-brand-soft: #1e1b4b;
+    --jv-surface: #181a33;
+    --jv-border: #2a2d52;
+    --bs-body-bg: #111326;
+    --bs-body-color: #e2e4f3;
+    --bs-secondary-bg: #23264a;
+    --bs-tertiary-bg: #181a33;
+    --bs-border-color: var(--jv-border);
+    --bs-link-hover-color-rgb: 165, 180, 252;
+}
+
+.navbar.bg-dark {
+    background: linear-gradient(90deg, #1e1b4b 0%, #312e81 60%, #4c1d95 100%) !important;
+    box-shadow: 0 4px 20px rgba(30, 27, 75, 0.25) !important;
+}
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+.navbar-brand .vaultwarden-icon {
+    margin-right: 0.5rem;
+}
+.jv-brand-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    vertical-align: middle;
+    padding: 0.15rem 0.5rem;
+    margin-left: 0.25rem;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.navbar .nav-link {
+    border-radius: 0.5rem;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:focus-visible {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+.btn-primary {
+    --bs-btn-bg: var(--jv-brand);
+    --bs-btn-border-color: var(--jv-brand);
+    --bs-btn-hover-bg: var(--jv-brand-hover);
+    --bs-btn-hover-border-color: var(--jv-brand-hover);
+    --bs-btn-active-bg: var(--jv-brand-hover);
+    --bs-btn-active-border-color: var(--jv-brand-hover);
+    --bs-btn-disabled-bg: var(--jv-brand);
+    --bs-btn-disabled-border-color: var(--jv-brand);
+    --bs-btn-focus-shadow-rgb: var(--jv-brand-rgb);
+}
+[data-bs-theme=dark] .btn-primary {
+    --bs-btn-color: #111326;
+    --bs-btn-hover-color: #111326;
+    --bs-btn-active-color: #111326;
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--jv-brand);
+    --bs-btn-border-color: var(--jv-brand);
+    --bs-btn-hover-bg: var(--jv-brand);
+    --bs-btn-hover-border-color: var(--jv-brand);
+    --bs-btn-active-bg: var(--jv-brand-hover);
+    --bs-btn-active-border-color: var(--jv-brand-hover);
+}
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: rgba(var(--jv-brand-rgb), 0.6);
+    box-shadow: 0 0 0 0.25rem rgba(var(--jv-brand-rgb), 0.2);
+}
+.form-check-input:checked {
+    background-color: var(--jv-brand);
+    border-color: var(--jv-brand);
+}
+
+/* Content panels: flat cards instead of heavy drop shadows */
+main .rounded.shadow:not(.bg-warning):not(.bg-danger):not(.bg-secondary),
+.card {
+    background-color: var(--jv-surface);
+    border: 1px solid var(--jv-border);
+    border-radius: 0.875rem !important;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 16px rgba(16, 24, 40, 0.04) !important;
+}
+.card {
+    overflow: hidden;
+}
+.card-header.btn-link {
+    font-weight: 600;
+    color: var(--bs-body-color);
+}
+.card-header.btn-link:hover {
+    color: var(--jv-brand);
+    background-color: var(--jv-brand-soft);
+}
+
+/* Settings header and invite form */
+#config-block.bg-secondary,
+#inviteUserFormBlock.bg-secondary {
+    background: linear-gradient(120deg, #312e81 0%, #4f46e5 100%) !important;
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 0.875rem !important;
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.25) !important;
+}
+
+/* Admin login */
+main > div.bg-danger:has(form) {
+    max-width: 28rem;
+    margin: 12vh auto 0;
+    padding: 2rem !important;
+    background: var(--jv-surface) !important;
+    border: 1px solid var(--jv-border);
+    border-radius: 1rem !important;
+    box-shadow: 0 12px 40px rgba(30, 27, 75, 0.12) !important;
+    --bs-text-opacity: 1;
+    color: var(--bs-body-color) !important;
+}
+main > div.bg-danger:has(form) h6 {
+    color: var(--bs-body-color) !important;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+main > div.bg-danger:has(form) small {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--bs-secondary-color);
+}
+main > div.bg-danger:has(form) .form-control {
+    width: 100% !important;
+}
+main > div.bg-danger:has(form) .btn {
+    width: 100%;
+}
+
+.table > :not(caption) > * > * {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+.badge {
+    font-weight: 600;
+    border-radius: 999px;
+}
+/**** END JetVault theme ****/
