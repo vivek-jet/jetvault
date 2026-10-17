@@ -3,6 +3,8 @@
 #
 #   JETVAULT_HOSTNAME=vault.example.com ACME_EMAIL=it@example.com bash bootstrap.sh
 #
+# Set JETVAULT_IMAGE to use a different image than ghcr.io/vivek-jet/jetvault:latest.
+#
 # Installs Docker, lays out /opt/jetvault, generates an admin token, starts the stack and
 # schedules nightly backups. Safe to re-run: existing .env and data are kept.
 set -euo pipefail
@@ -42,8 +44,14 @@ if [ ! -f "${ROOT}/.env" ]; then
     echo "Admin token saved to ${ROOT}/admin-token.txt (root only). Store it in a safe place, then delete the file."
 fi
 
+# Optional image override, e.g. an image loaded with `docker load` instead of pulled from GHCR
+if [ -n "${JETVAULT_IMAGE:-}" ]; then
+    sed -i '/^JETVAULT_IMAGE=/d' "${ROOT}/.env"
+    echo "JETVAULT_IMAGE=${JETVAULT_IMAGE}" >> "${ROOT}/.env"
+fi
+
 cd "${ROOT}"
-docker compose --env-file .env pull
+docker compose --env-file .env pull --ignore-pull-failures
 docker compose --env-file .env up -d
 
 echo "17 2 * * * root ${ROOT}/backup.sh >> /var/log/jetvault-backup.log 2>&1" > /etc/cron.d/jetvault-backup
